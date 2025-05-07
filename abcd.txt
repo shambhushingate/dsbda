@@ -1,0 +1,500 @@
+Stage-Stage-1: Map: 1   Cumulative CPU: 1.55 sec   HDFS Read: 3714 HDFS Write: 104 SUCCESS
+Total MapReduce CPU Time Spent: 1 seconds 550 msec
+OK
+Time taken: 24.733 seconds
+hive> hive> insert into airline values (1,'AirIndia',20),(2,'indigo',30);
+NoViableAltException(26@[])
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1020)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:199)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:166)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:393)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:307)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1110)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1158)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1047)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1037)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:207)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:159)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:370)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:756)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:675)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:615)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:221)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:136)
+FAILED: ParseException line 1:0 cannot recognize input near 'hive' '>' 'insert'
+hive> insert into airline values (1,'AirIndia',20),(2,'indigo',30);
+Query ID = cloudera_20250425032424_5ff1f79d-12a2-4a01-a194-06f503f21a7d
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1745575920118_0002, Tracking URL = http://quickstart.cloudera:8088/proxy/application_1745575920118_0002/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1745575920118_0002
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 0
+2025-04-25 03:25:10,530 Stage-1 map = 0%,  reduce = 0%
+2025-04-25 03:25:19,498 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.52 sec
+MapReduce Total cumulative CPU time: 1 seconds 520 msec
+Ended Job = job_1745575920118_0002
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to: hdfs://quickstart.cloudera:8020/user/hive/warehouse/airline/.hive-staging_hive_2025-04-25_03-24-59_905_1677023091572730171-1/-ext-10000
+Loading data to table default.airline
+Table default.airline stats: [numFiles=1, numRows=2, totalSize=26, rawDataSize=24]
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1   Cumulative CPU: 1.52 sec   HDFS Read: 3720 HDFS Write: 97 SUCCESS
+Total MapReduce CPU Time Spent: 1 seconds 520 msec
+OK
+Time taken: 20.988 seconds
+hive> select * from flight join airline on flight.flight_id = airline.flight_id;
+Query ID = cloudera_20250425032525_84180067-ccd9-42a2-ae5c-5990ce120bff
+Total jobs = 1
+Execution log at: /tmp/cloudera/cloudera_20250425032525_84180067-ccd9-42a2-ae5c-5990ce120bff.log
+2025-04-25 03:26:03	Starting to launch local task to process map join;	maximum memory = 1013645312
+2025-04-25 03:26:04	Dump the side-table for tag: 1 with group count: 2 into file: file:/tmp/cloudera/4a236e47-bb16-45c8-891d-fb5c23e44228/hive_2025-04-25_03-25-57_455_4496903329023249420-1/-local-10003/HashTable-Stage-3/MapJoin-mapfile01--.hashtable
+2025-04-25 03:26:04	Uploaded 1 File to: file:/tmp/cloudera/4a236e47-bb16-45c8-891d-fb5c23e44228/hive_2025-04-25_03-25-57_455_4496903329023249420-1/-local-10003/HashTable-Stage-3/MapJoin-mapfile01--.hashtable (316 bytes)
+2025-04-25 03:26:04	End of local task; Time Taken: 1.561 sec.
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1745575920118_0003, Tracking URL = http://quickstart.cloudera:8088/proxy/application_1745575920118_0003/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1745575920118_0003
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 0
+2025-04-25 03:26:14,901 Stage-3 map = 0%,  reduce = 0%
+2025-04-25 03:26:23,572 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 1.6 sec
+MapReduce Total cumulative CPU time: 1 seconds 600 msec
+Ended Job = job_1745575920118_0003
+MapReduce Jobs Launched: 
+Stage-Stage-3: Map: 1   Cumulative CPU: 1.6 sec   HDFS Read: 6512 HDFS Write: 60 SUCCESS
+Total MapReduce CPU Time Spent: 1 seconds 600 msec
+OK
+1	Mumbai	Delhi	1	AirIndia	20
+2	Banglore	Chennai	2	indigo	30
+Time taken: 27.197 seconds, Fetched: 2 row(s)
+hive> External Table flights_info (
+    > year INT,
+    >    month INT,
+    >    day INT,
+    >    day_of_week INT,
+    >    dep_time INT,
+    >    crs_dep_time INT,
+    >    arr_time INT,
+    >    crs_arr_time INT,
+    >    unique_carrier STRING,
+    >    flight_num INT,
+    >    tail_num STRING,
+    >    actual_elapsed_time INT,
+    >    crs_elapsed_time INT,
+    >    air_time INT,
+    >    arr_delay INT,
+    >    dep_delay INT,
+    >  dep_delay INT,
+    >    origin STRING,
+    >    dest STRING,
+    >    distance INT,
+    >    taxi_in INT,
+    >    taxi_out INT,
+    >    cancelled INT,
+    >    cancellation_code STRING,
+    >    diverted INT,
+    >    carrier_delay STRING,
+    >    weather_delay STRING,
+    >    nas_delay STRING,
+    > 
+    > ;
+NoViableAltException(104@[])
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1020)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:199)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:166)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:393)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:307)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1110)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1158)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1047)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1037)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:207)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:159)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:370)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:756)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:675)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:615)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:221)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:136)
+FAILED: ParseException line 1:0 cannot recognize input near 'External' 'Table' 'flights_info'
+hive> External Table flights_info (
+    > year INT,
+    >    month INT,
+    >    day INT,
+    >    day_of_week INT,
+    >    dep_time INT,
+    >    crs_dep_time INT,
+    >    arr_time INT,
+    >    crs_arr_time INT,
+    >    unique_carrier STRING,
+    >    flight_num INT,
+    >    tail_num STRING,
+    >    actual_elapsed_time INT,
+    >    crs_elapsed_time INT,
+    >    air_time INT,
+    >    arr_delay INT,
+    >    dep_delay INT,
+    >    origin STRING,
+    >    dest STRING,
+    >    distance INT,
+    >    taxi_in INT,
+    >    taxi_out INT,
+    > cancelled INT,
+    >    cancellation_code STRING,
+    >    diverted INT,
+    >    carrier_delay STRING,
+    >    weather_delay STRING,
+    >    nas_delay STRING,
+    >    security_delay STRING,
+    >    late_aircraft_delay STRING);
+NoViableAltException(104@[])
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1020)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:199)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:166)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:393)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:307)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1110)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1158)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1047)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1037)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:207)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:159)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:370)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:756)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:675)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:615)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:221)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:136)
+FAILED: ParseException line 1:0 cannot recognize input near 'External' 'Table' 'flights_info'
+hive> Create External Table flights_info (
+    > year INT,
+    > month INT,
+    > day INT,
+    > day_of_week INT,
+    > dep_time INT,
+    > crs_dep_time INT,
+    > arr_time INT,
+    > crs_arr_time INT,
+    > unique_carrier STRING,
+    > flight_num INT,
+    > tail_num STRING,
+    > actual_elapsed_time INT,
+    > crs_elapsed_time INT,
+    > air_time INT,
+    > arr_delay INT,
+    > dep_delay INT,
+    > origin STRING,
+    > dest STRING,
+    > distance INT,
+    > taxi_in INT,
+    > taxi_out INT,
+    > cancelled INT,
+    > cancellation_code STRING,
+    > diverted INT,
+    > carrier_delay STRING,
+    > weather_delay STRING,
+    > nas_delay STRING,
+    > security_delay STRING,
+    > late_aircraft_delay STRING)
+    > row format delimited fields terminated by ','
+    > location "/home/cloudera/Desktop/flight_info.csv";
+OK
+Time taken: 0.32 seconds
+hive> select* from flights_info limit 10;
+OK
+2008	1	3	4	2003	1955	2211	2225	WN	335	N712SW	128	150	116	-14	8	IAD	TPA	810	4	8	00	NA	NA	NA	NA	NA
+2008	1	3	4	754	735	1002	1000	WN	3231	N772SW	128	145	113	2	19	IAD	TPA	810	5	10	00	NA	NA	NA	NA	NA
+2008	1	3	4	628	620	804	750	WN	448	N428WN	96	90	76	14	8	IND	BWI	515	3	17	00	NA	NA	NA	NA	NA
+2008	1	3	4	926	930	1054	1100	WN	1746	N612SW	88	90	78	-6	-4	IND	BWI	515	3	7	00	NA	NA	NA	NA	NA
+2008	1	3	4	1829	1755	1959	1925	WN	3920	N464WN	90	90	77	34	34	IND	BWI	515	3	10	00	2	0	0	0	32
+2008	1	3	4	1940	1915	2121	2110	WN	378	N726SW	101	115	87	11	25	IND	JAX	688	4	10	00	NA	NA	NA	NA	NA
+2008	1	3	4	1937	1830	2037	1940	WN	509	N763SW	240	250	230	57	67	IND	LAS	1591	3	7	00	10	0	0	0	47
+2008	1	3	4	1039	1040	1132	1150	WN	535	N428WN	233	250	219	-18	-1	IND	LAS	1591	7	7	00	NA	NA	NA	NA	NA
+2008	1	3	4	617	615	652	650	WN	11	N689SW	95	95	70	2	2	IND	MCI	451	6	19	00	NA	NA	NA	NA	NA
+2008	1	3	4	1620	1620	1639	1655	WN	810	N648SW	79	95	70	-16	0	IND	MCI	451	3	6	00	NA	NA	NA	NA	NA
+Time taken: 0.136 seconds, Fetched: 10 row(s)
+hive> hive> create index idx_arr_time1 on table flights_info (arr_time) as 'compact' with deferred rebuild;
+NoViableAltException(26@[])
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1020)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:199)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:166)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:393)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:307)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1110)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1158)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1047)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1037)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:207)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:159)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:370)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:756)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:675)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:615)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:221)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:136)
+FAILED: ParseException line 1:0 cannot recognize input near 'hive' '>' 'create'
+hive> create index idx_arr_time1 on table flights_info (arr_time) as 'compact' with deferred rebuild;
+OK
+Time taken: 1.118 seconds
+hive> select dest, avg(dep_delay) as avg_delay from flights_info group by dest;
+Query ID = cloudera_20250425034545_3dd2bc8d-0038-4e83-8367-639eaf98858c
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1745575920118_0004, Tracking URL = http://quickstart.cloudera:8088/proxy/application_1745575920118_0004/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1745575920118_0004
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2025-04-25 03:45:59,475 Stage-1 map = 0%,  reduce = 0%
+2025-04-25 03:46:23,797 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 4.99 sec
+2025-04-25 03:46:47,580 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 7.54 sec
+MapReduce Total cumulative CPU time: 7 seconds 540 msec
+Ended Job = job_1745575920118_0004
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 7.7 sec   HDFS Read: 25124771 HDFS Write: 4669 SUCCESS
+Total MapReduce CPU Time Spent: 7 seconds 700 msec
+OK
+NULL	NULL
+ABE	21.382978723404257
+ABQ	9.467772333207689
+ACV	31.59040590405904
+AEX	19.357142857142858
+ALB	10.87248322147651
+AMA	8.366576819407008
+ANC	7.0
+ASE	12.252442996742671
+ATL	12.628838451268358
+ATW	18.39591836734694
+AUS	10.803120697567692
+AVL	4.731343283582089
+AVP	20.942028985507246
+AZO	10.582089552238806
+BDL	11.953727506426736
+BFL	15.64935064935065
+BGR	7.672413793103448
+BHM	9.356413994169095
+BIL	9.151202749140893
+BIS	6.311827956989247
+BLI	1.6774193548387097
+BMI	28.34375
+BNA	10.160826032540676
+BOI	14.310951239008793
+BOS	13.526932084309134
+BPT	5.447368421052632
+BRO	10.451612903225806
+BTM	3.459016393442623
+BTR	6.438888888888889
+BTV	14.03448275862069
+BUF	15.289731051344743
+BUR	13.247383444338725
+BWI	8.009822838098579
+BZN	15.78804347826087
+CAE	33.96646341463415
+CAK	37.876543209876544
+CDC	9.27659574468085
+CEC	35.333333333333336
+CHA	5.890243902439025
+CHS	18.87406015037594
+CIC	35.333333333333336
+CID	12.08130081300813
+CLD	6.45
+CLE	8.88167053364269
+CLL	3.967741935483871
+CLT	11.626711061783205
+CMH	9.981958762886597
+COD	7.066666666666666
+COS	11.777411376751855
+CPR	2.0303030303030303
+CRP	8.480263157894736
+CRW	14.253731343283581
+CVG	6.7594483252731505
+CWA	36.73972602739726
+DAB	-0.25
+DAL	7.337758488639265
+DAY	13.260240963855422
+DCA	13.97754911131899
+DEN	11.519239720713731
+DFW	16.037809647979138
+DRO	4.989726027397261
+DSM	15.026819923371647
+DTW	12.860448300795372
+EGE	8.005464480874316
+EKO	11.301470588235293
+ELP	9.862714508580343
+EUG	20.247619047619047
+EWR	18.67942402425161
+FAR	12.84304932735426
+FAT	12.24024024024024
+FCA	10.608695652173912
+FLG	0.0
+FLL	9.839575971731449
+FSD	18.51360544217687
+FWA	23.03787878787879
+GEG	13.291708291708291
+GJT	7.61578947368421
+GPT	9.897435897435898
+GRB	28.550632911392405
+GRK	12.072727272727272
+GRR	12.44273127753304
+GSO	18.994708994708994
+GSP	15.614770459081836
+GTF	5.855263157894737
+GUC	16.362068965517242
+HDN	11.557851239669422
+HLN	10.132075471698114
+HNL	6.899328859060403
+HOU	8.818463925523663
+HPN	15.545454545454545
+HRL	9.199445983379501
+HSV	8.512280701754387
+IAD	15.832634228187919
+IAH	6.0725863284002815
+ICT	13.68565815324165
+IDA	9.974169741697416
+ILM	6.6976744186046515
+IND	11.854857142857142
+IPL	10.077586206896552
+ISP	8.270408163265307
+ITO	-2.8735632183908044
+IYK	6.246753246753247
+JAC	21.885714285714286
+JAN	11.734553775743708
+JAX	9.41703056768559
+JFK	11.602308499475342
+KOA	5.595679012345679
+LAN	20.962025316455698
+LAS	13.96923443834963
+LAX	13.350830815709969
+LBB	8.253694581280788
+LCH	9.257731958762887
+LEX	14.467171717171718
+LFT	8.5850622406639
+LGA	14.531638418079096
+LGB	7.690744920993228
+LIH	2.7397769516728623
+LIT	12.117525773195876
+LNK	17.396825396825395
+LRD	7.549019607843137
+LWS	3.480769230769231
+MAF	11.010610079575597
+MBS	29.073684210526316
+MCI	10.715529345689413
+MCO	8.616539440203562
+MDT	19.674911660777386
+MDW	9.319974247545469
+MEM	11.933908045977011
+MFE	14.87037037037037
+MFR	18.763796909492275
+MGM	14.580645161290322
+MHT	11.631993695823484
+MIA	13.928571428571429
+MKE	9.385019710906702
+MLB	30.0
+MLI	13.32857142857143
+MLU	8.084745762711865
+MOB	8.565891472868216
+MOD	20.05982905982906
+MRY	13.974182444061961
+MSN	16.69576059850374
+MSO	7.281481481481482
+MSP	16.87215064420218
+MSY	9.614173228346457
+MTJ	6.633484162895928
+MYR	9.824175824175825
+OAK	11.617312601531678
+OGD	8.0
+OGG	9.734417344173442
+OKC	12.712153518123667
+OMA	14.070433436532507
+ONT	12.043087298613713
+ORD	26.654347143753924
+ORF	16.636678200692042
+OXR	9.214285714285714
+PBI	9.937022900763358
+PDX	14.809505557684936
+PHL	14.508234392952891
+PHX	9.44574491358565
+PIA	24.540880503144653
+PIH	9.668789808917197
+PIT	11.87783075089392
+PMD	16.92452830188679
+PNS	8.39655172413793
+PSC	11.954337899543379
+PSP	8.798063623789766
+PVD	9.573696145124716
+PWM	14.1625
+RAP	5.058577405857741
+RDD	35.589928057553955
+RDM	13.85958904109589
+RDU	9.138862102217937
+RFD	14.883333333333333
+RIC	15.081911262798634
+RNO	15.047320410490308
+ROA	21.1
+ROC	10.422018348623853
+RSW	9.377833753148614
+SAN	14.294577103325151
+SAT	11.723584485064645
+SAV	17.956087824351297
+SBA	16.157509157509157
+SBN	25.25657894736842
+SBP	12.733668341708542
+SDF	13.707876370887337
+SEA	15.184952978056426
+SFO	32.43471230292413
+SGF	16.17216117216117
+SGU	4.5
+SHV	15.747252747252746
+SJC	12.204102920723226
+SJU	16.51304347826087
+SLC	12.779516524582506
+SLE	5.60377358490566
+SMF	12.4961262553802
+SMX	9.166666666666666
+SNA	12.124163116250761
+SPI	37.773049645390074
+SRQ	9.617021276595745
+STL	9.979321108076473
+STT	15.5
+SUN	3.539772727272727
+SYR	14.921800947867299
+TEX	2.125
+TLH	6.694915254237288
+TPA	8.842401500938086
+TRI	2.0344827586206895
+TUL	11.697632058287796
+TUS	12.359434475258293
+TVC	39.1025641025641
+TWF	14.58
+TYS	8.860892388451443
+VPS	7.571428571428571
+XNA	8.841642228739003
+YKM	7.032258064516129
+YUM	6.88
+Time taken: 74.469 seconds, Fetched: 217 row(s)
+hive> +++
